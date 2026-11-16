@@ -3,6 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-N7ZL8NKS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
+
+    <!-- Event snippet for راغب conversion page -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17031387437/NG9cCJSXvLkdEK2ymbk_',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
     <title>شركة نشتري كل شيء بالكويت | أثاث مكيفات سكراب مطاعم | 94477390</title>
     <meta name="description" content="نشتري كل شيء في الكويت: أثاث، مكيفات، وحدات تكييف، سنترال، سكراب، مطابخ، أبواب، مخازن، مكاتب، مقاهي ومطاعم، بيوت كاملة، شقق، ديوانيات، أجهزة، شاليهات، غرف. دفع نقدي فوري ونقل سريع. اتصل: 94477390">
     <meta name="keywords" content="شراء أثاث مستعمل, نشتري اثاث مستعمل, شراء الاثاث, نشتري أثاث الجهراء, نشتري أثاث حولي, رقم شراء الاثاث المستعمل, شركة تشتري الاثاث المستعمل, يشتري الاثاث المستعمل, نقل وشراء اثاث مستعمل, نشتري مستعمل, احد يشتري اثاث مستعمل, نشترى الاثاث المستعمل, شركة شراء اثاث, نشتري مطابخ مستعملة, شركة اثاث مستعمل, رقم يشتري اثاث, رقم احد يشتري اثاث مستعمل, شراء جميع الاثاث المستعمل, نشتري الأثاث, ابي رقم احد يشتري اثاث مستعمل, اثاث مستعمل للشراء, ابي احد يشتري اثاث مستعمل, نشتري الاثاث المستخدم, اثاث مستعمل, بيع اثاث مستعمل, يشترون اثاث مستعمل, مكاتب شراء الاثاث المستعمل, بيع عفش مستعمل, رقم يشتري الاثاث المستعمل, بيع الاثاث المستعمل, بيع وشراء اثاث مستعمل, أثاث مستخدم, شراء اثاث سكراب, نشتري اثاث, بيع وشراء الاثاث المستعمل, محلات شراء الاثاث المستعمل">
@@ -987,21 +1012,32 @@
                 }
             }
             var telUrl = 'tel:' + cleanNumber;
-            setTimeout(function() {
-                window.location.href = telUrl;
-            }, 150);
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion(telUrl);
+            } else {
+                setTimeout(function() {
+                    window.location.href = telUrl;
+                }, 150);
+            }
             return false;
         }
 
         function trackWhatsAppClick(url) {
-            setTimeout(function() {
-                window.open(url, '_blank');
-            }, 150);
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion(url);
+            } else {
+                setTimeout(function() {
+                    window.open(url, '_blank');
+                }, 150);
+            }
             return false;
         }
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion();
+            }
             alert('شكراً لتواصلكم معنا! سيتم الاتصال بكم فوراً لتحديد موعد المعاينة والشراء.');
             this.reset();
         });
